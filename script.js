@@ -1,7 +1,3 @@
-// function displayWeatherInfo() {
-
-//     var city = $(this).attr("data-name")
-
 $("#add-city").on("click", function () {
     event.preventDefault();
     var cityInput = $("#city-input").val();
@@ -13,45 +9,78 @@ $("#add-city").on("click", function () {
         url: queryURL,
         method: "GET"
     }).then(function(response) {
-       
+       console.log(response);
+
         var cityDiv = $("<div class='city'>");
 
         var cityName = response.name;
 
-        var header = $("<h4>").text(cityName);
+        var list = $("<h6>").text(cityName);
 
-        cityDiv.append(header);
+        cityDiv.append(list);
 
         $("#city-section").append(cityDiv);
-       
-       
-        // var temperature = response.Temp;
 
-        // var pOne = $("<p>").text("Temperature: " + temperature);
+        // Code for city name
 
-        // cityDiv.append(pOne);
+        var currentDiv = $("<div class='current'>");
 
-        // $("#city-section").append(cityDiv);
+        var currentCity = response.name;
+
+        var header = $("<h5>").text(currentCity);
+
+        currentDiv.append(header);
+
+        $("#city-title").append(currentDiv);
+
+        // Code for current date
+
+        var currentDate = new Date();
+
+        var month = currentDate.getMonth()+1;
+        var day = currentDate.getDate();
+        
+        var output = '(' + month + '/' + day + '/' + currentDate.getFullYear() + ')';
+        
+        console.log(output);
+
+        $("#city-title").append(output);
+
+        // Code for city temperature 
+
+        var temperatureDiv = $("<div class='temperature'>");
+        
+        var temperature = response.main.temp;
+
+        var pOne = $("<p>").text("Temperature: " + temperature);
+
+        temperatureDiv.append(pOne);
+
+        $("#city-weather").append(temperatureDiv);
        
+        // Code for city humidity
+
+        var humidityDiv = $("<div class='humidity'>");
+        
+        var humidity = response.main.humidity;
+
+        var pTwo = $("<p>").text("Humidity: " + humidity);
+
+        humidityDiv.append(pTwo);
+
+        $("#city-weather").append(humidityDiv);
+
+        // Code for city wind speed
+
+        var windspeedDiv = $("<div class='windspeed'>");
+        
+        var windspeed = response.wind.speed;
+
+        var pThree = $("<p>").text("Wind Speed: " + windspeed);
+
+        windspeedDiv.append(pThree);
+
+        $("#city-weather").append(windspeedDiv);
     });
     
 });
-
-// Function for displaying city data
-// function renderButtons() {
-//     $("#buttons-view").empty();
-
-// // Looping through the array of cities
-// for (var i = 0; i < cities.length; i++) {
-
-//     var a = $("<button>");
-//           // Adding a class of city-btn to our button
-//           a.addClass("city-btn");
-//           // Adding a data-attribute
-//           a.attr("data-name", cities[i]);
-//           // Providing the initial button text
-//           a.text(cities[i]);
-//           // Adding the button to the buttons-view div
-//           $("#buttons-view").append(a);
-//         }
-// }
