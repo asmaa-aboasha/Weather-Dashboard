@@ -28,12 +28,14 @@
 
     <!-- Page layout here -->
         <div class="row">
-            <div class="col s4">
+            <div class="col s3">
                 <h6>Search for a City:</h6>
                 
                 <!-- Search box -->
                 <form class="form">
                     <input type="text" name="text" class="search" id="city-input" required="required">
+
+                    <!-- Button triggers new city to be added -->
                     <button type="submit" class="searchButton" id="add-city">
                         <i class="fa fa-search"></i>
                     </button>
@@ -43,10 +45,17 @@
                 <div class="card">
                     <div class="card-body" id="city-section"></div>
                 </div>
-            </div>
 
+                <div id="buttons-view"></div>
+
+            </div>
+            
             <!-- Main content -->
-            <div class="col s8">
+            <div class="col s9">
+                <div class="card">
+                    <div class="card-title" id="city-title"></div>
+                    <div class="card-content" id="city-weather"></div>
+                </div>
                 <h5>5-Day Forecast:</h5>
             </div>
         </div>     
