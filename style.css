@@ -30,3 +30,7 @@
     display: inline-flex;
     width: 80%;
 }
+
+.card-title {
+  padding: 20px;
+}
